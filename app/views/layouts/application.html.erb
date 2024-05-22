@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>FindMyRoommate</title>
   <%= csrf_meta_tags %>
@@ -7,29 +7,31 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <nav>
-      <ul>
+<body class="bg-gray-900 font-sans leading-normal tracking-normal">
+  <header class="bg-blue-500 text-white p-4 w-full">
+    <nav class="container mx-auto flex justify-between items-center">
+      <ul class="flex space-x-4">
         <% if user_signed_in? %>
           <li>
-            <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to logout?' } %>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "text-white hover:text-gray-200" %>
           </li>
         <% else %>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Login', new_user_session_path %></li>
+          <li><%= link_to 'Sign Up', new_user_registration_path, class: "text-white hover:text-gray-200" %></li>
+          <li><%= link_to 'Login', new_user_session_path, class: "text-white hover:text-gray-200" %></li>
         <% end %>
       </ul>
     </nav>
   </header>
 
-  <div class="container">
+  <div class="container mx-auto mt-4">
     <% if notice %>
-      <p class="notice"><%= notice %></p>
+      <p class="notice text-green-500"><%= notice %></p>
     <% end %>
     <% if alert %>
-      <p class="alert"><%= alert %></p>
+      <p class="alert text-red-500"><%= alert %></p>
     <% end %>
     <%= yield %>
   </div>

@@ -1,10 +1,37 @@
-<h1>Posts</h1>
-<%= link_to 'New Post', new_post_path %>
-
-<ul>
-  <% @posts.each do |post| %>
-    <li>
-      <%= link_to post.author, post %> - <%= post.location %> - <%= post.rent %> - <%= post.preferred_gender %>
-    </li>
-  <% end %>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <title>FindMyRoommate - Posts</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+  <div class="container mx-auto p-4">
+    <h1 class="text-4xl font-bold text-white mb-4">Posts</h1>
+    <div class="mb-4">
+      <%= link_to 'New Post', new_post_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+    <ul class="space-y-4">
+      <% @posts.each do |post| %>
+        <li class="p-4 bg-gray-800 rounded-lg shadow-md w-full">
+          <h2 class="text-2xl font-semibold">
+            <%= link_to post.author, post, class: "text-blue-400 hover:underline" %>
+          </h2>
+          <p class="text-gray-400">
+            Location: <span class="text-white"><%= post.location %></span>
+          </p>
+          <p class="text-gray-400">
+            Rent: <span class="text-white">$<%= post.rent %></span>
+          </p>
+          <p class="text-gray-400">
+            Preferred Gender: <span class="text-white"><%= post.preferred_gender %></span>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</body>
+</html>

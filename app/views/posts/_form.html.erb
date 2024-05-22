@@ -1,36 +1,36 @@
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <div id="error_explanation" class="bg-red-100 text-red-800 p-4 mb-4 rounded">
+      <h2 class="font-bold text-lg mb-2"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
       <ul>
         <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <li class="mb-1"><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
+  <div class="mb-4">
+    <%= form.label :author, class: "block text-gray-400 font-bold mb-2" %>
+    <%= form.text_field :author, class: "appearance-none bg-gray-800 rounded-md p-2 w-full text-gray-300" %>
   </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
+  <div class="mb-4">
+    <%= form.label :location, class: "block text-gray-400 font-bold mb-2" %>
+    <%= form.text_field :location, class: "appearance-none bg-gray-800 rounded-md p-2 w-full text-gray-300" %>
   </div>
 
-  <div class="field">
-    <%= form.label :rent %>
-    <%= form.number_field :rent %>
+  <div class="mb-4">
+    <%= form.label :rent, class: "block text-gray-400 font-bold mb-2" %>
+    <%= form.number_field :rent, class: "appearance-none bg-gray-800 rounded-md p-2 w-full text-gray-300" %>
   </div>
 
-  <div class="field">
-    <%= form.label :preferred_gender %>
-    <%= form.text_field :preferred_gender %>
+  <div class="mb-4">
+    <%= form.label :preferred_gender, class: "block text-gray-400 font-bold mb-2" %>
+    <%= form.text_field :preferred_gender, class: "appearance-none bg-gray-800 rounded-md p-2 w-full text-gray-300" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
   </div>
 <% end %>
