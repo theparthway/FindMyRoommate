@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FindMyRoommate</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to logout?' } %>
+          </li>
+        <% else %>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+  </div>
+</body>
+</html>
