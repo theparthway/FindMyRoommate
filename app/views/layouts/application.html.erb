@@ -13,7 +13,8 @@
 <body class="bg-gray-900 font-sans leading-normal tracking-normal">
   <header class="bg-blue-500 text-white p-4 w-full">
     <nav class="container mx-auto flex justify-between items-center">
-      <ul class="flex space-x-4">
+      <ul class="flex space-x-8">
+        <%= link_to 'FindMyRoommate', posts_path, class: "text-gray-200 font-bold text-xl" %>
         <% if user_signed_in? %>
           <li>
             <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "text-white hover:text-gray-200" %>
